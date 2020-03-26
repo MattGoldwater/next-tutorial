@@ -9,21 +9,17 @@ function getPosts() {
   ];
 }
 
-const PostLink = ({ post }) => (
-  <li>
-    <Link href="/p/[id]" as={`/p/${post.id}`}>
-      <a>{post.title}</a>
-    </Link>
-  </li>
-);
-
 export default function Blog() {
   return (
     <Layout>
       <h1>My Blog</h1>
       <ul>
         {getPosts().map(post => (
-          <PostLink key={post.id} post={post} />
+          <li key={post.id}>
+            <Link href="/p/[id]" as={`/p/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
         ))}
       </ul>
       <style jsx>{`
